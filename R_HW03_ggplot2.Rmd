@@ -1,0 +1,117 @@
+---
+title: "Aranzi Aronzo 阿朗基"
+out_put: html_document
+auther: Hsieh Chu-Ying
+---
+![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic02.jpg)
+
+---
+
+## Family Member
+|**中文姓名**|**英文姓名**|**描述**|**大頭照**|
+|------------|------------|--------|----------|
+|`白兔妹`|SHIROUSAGI|天真無邪的女孩子,很喜歡吃東西,遊玩和睡覺,最喜歡黑兔妹|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic16.jpg)|
+|`河童君`|KAPPA|喜歡旅行|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic13.jpg)|
+|`熊貓哥`|PANDA|非常激進的男子漢,有煩惱癖|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic15.jpg)|
+|`壞東西`|WARUMONO|總是做很多令人拿他沒轍的壞事情|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic14.jpg)|
+|`白貓`|SHIRONEKO|白色貓咪|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic22.jpg)|
+|`黑兔妹`||非常賢慧,擅長手工藝,跟白兔妹是好朋友|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic24.jpg)|
+|`拉比`||看似非常強勢的女孩子,但事實上是個怕寂寞的兔子 |![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic25.jpg)|
+|`小啾鼠`||可愛系女孩的小老鼠|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic01.jpg)|
+|`小栗鼠`||非常可愛,尾巴也非常非常的可愛|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic19.jpg)|
+|`企鵝`||對於熱的事務不擅長,喜歡冰冷的食物|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic23.jpg)|
+|`黑熊貓`||一旦聚集起來的話會組成黑熊貓團,順便一提黑熊貓團是祕密結社|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic28.jpg)|
+
+
+## Official Website
+####[Official Home Page](http://www.aranziaronzo.com/)
+####[Facebook](https://www.facebook.com/aranziaronzo/?fref=ts)
+
+## Online Shop
+####[Shop website](http://shop3.aranziaronzo.com/shopping/index.html)
+
+## Activities Planning
+
+|**Cafe Store**|**Travel Map**|
+|--------------|--------------|
+|[Cafe shop](http://www.aranziaronzo.com/shop/taiwan.html)|[Hotel](http://www.aranziaronzo.com/shop/hotel.html)|
+|**`享受美味阿朗基~`**|**`阿朗基愛旅行！`**|
+|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic07.jpg)|![](C:\Users\ASUS\Desktop\R\R_HW\R_HW03_ggplot2_GitHub_page\Aranzi/aranzi_pic11.jpg)|
+
+## Blog
+####[Japanese Shop Blog](http://news.aranzi.jp/)
+####[World Caravan](http://world.aranzi.jp/en.html)
+
+### Japanese Blog Release Numbers 
+```{R message=FALSE ,echo=FALSE}
+library(plotly)
+library(ggplot2)
+blog_year_num <- read.csv("/Users/ASUS/Desktop/R/R_HW/R_HW03_ggplot2_GitHub_page/Aranzi/data_Aranzi_blog.csv", header = TRUE)
+
+str(blog_year_num)
+
+a <- ggplot(blog_year_num, aes(x = factor(year), y = blog))
+b <- a + geom_bar(stat = "identity", aes(fill = blog)) +
+  xlab("Year") +
+  ylab("Blog Number") +
+  ggtitle("[Bar Plot] Releasing Blog Number of Aranzi Official Website") +
+  coord_flip()
+ggplotly(b)
+
+```
+
+
+
+```{R}
+library(plotly)
+library(ggplot2)
+blog_year_num <- read.csv("/Users/ASUS/Desktop/R/R_HW/R_HW03_ggplot2_GitHub_page/Aranzi/data_Aranzi_blog.csv", header = TRUE)
+
+c <- ggplot(blog_year_num, aes(x = factor(year), y = blog)) +
+     geom_histogram(stat = "identity",aes(factor(year), fill = factor(blog))) +
+     xlab("Year") +
+     ylab("Blog Number") +
+     ggtitle("[Histogram] Releasing Blog Number of Aranzi Official Website") 
+  ggplotly(c)
+```
+
+
+
+```{R}
+library(plotly)
+library(ggplot2)
+blog_year_num <- read.csv("/Users/ASUS/Desktop/R/R_HW/R_HW03_ggplot2_GitHub_page/Aranzi/data_Aranzi_blog.csv", header = TRUE)
+
+d <- ggplot(blog_year_num, aes(x = year, y = blog)) + 
+  xlab("Year") +
+  ylab("Blog Number") +
+  ggtitle("[Line Chart] Releasing Blog Number of Aranzi Official Website") +
+  geom_line(colour = "light green", size = 2, linetype = 1) + 
+  geom_point(colour = "dark green") 
+ggplotly(d)
+```
+
+```{R}
+library(plotly)
+library(ggplot2)
+blog_month_num <- read.csv("/Users/ASUS/Desktop/R/R_HW/R_HW03_ggplot2_GitHub_page/Aranzi/data_Aranzi_blog_month.csv", header = TRUE)
+str(blog_month_num)
+
+p <- ggplot(blog_month_num, aes(year, blog_num_m)) + 
+  xlab("Year") +
+  ylab("Blog Number") +
+  ggtitle("[Scatter Diagram] Releasing Blog Number of Aranzi Official Website") 
+p + geom_point(aes(colour = factor(year)))
+```
+
+
+```{R}
+library(plotly)
+library(ggplot2)
+
+t <- ggplot(blog_month_num, aes(x = year, y = blog_num_m)) +
+  ylab("Blog Number") +
+  ggtitle("[boxplot] Releasing Blog Number of Aranzi Official Website")  
+t + geom_boxplot(aes(color = factor(year)),outlier.colour = "black") + geom_jitter(width = 0.1,aes(color = factor(year))) 
+```
+
